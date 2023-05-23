@@ -1,4 +1,5 @@
 import { CosmosClient } from "@azure/cosmos";
+import {Context} from "@azure/functions"
 
 // Set connection string from CONNECTION_STRING value in local.settings.json
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
