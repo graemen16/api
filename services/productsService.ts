@@ -10,7 +10,7 @@ const productService = {
       this.database = this.client.database("tailwind");
       this.container = this.database.container("products");
     } catch (err) {
-      console.log(err.message);
+      console.log(' Error connectign to client, database or container : ' +err.message);
     }
   },
   async create(productToCreate) {
