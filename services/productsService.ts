@@ -19,6 +19,7 @@ const productService = {
     return resource;
   },
   async read(context: Context): Promise<string> {
+    this.init()
     context.log ("Client : " + this.client + "type " + typeof(this.client))
     const iterator = this.container.items.readAll();
     const { resources } = await iterator.fetchAll();
@@ -37,6 +38,6 @@ const productService = {
   },
 };
 
-productService.init();
+//productService.init();
 
 export default productService;
