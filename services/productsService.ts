@@ -2,10 +2,15 @@ import { CosmosClient } from "@azure/cosmos";
 import {Context} from "@azure/functions"
 
 // Set connection string from CONNECTION_STRING value in local.settings.json
-const CONNECTION_STRING = process.env.CONNECTION_STRING;
+
 
 const productService = {
-  init() {
+
+  init(context: Context) {
+    const CONNECTION_STRING = process.env.CONNECTION_STRING;
+    const ALT_CONNECTION_STRING = process.env.ALT_CONNECTION_STRING;
+    context.log('Con: ' + CONNECTION_STRING)
+    context.log('Alt: ' + ALT_CONNECTION_STRING)
     try {
       this.client  = new CosmosClient(CONNECTION_STRING);
       this.database = this.client.database("tailwind");
@@ -19,7 +24,8 @@ const productService = {
     return resource;
   },
   async read(context: Context): Promise<string> {
-    this.init()
+
+    this.init(context)
     context.log ("Client : " + this.client + "type " + typeof(this.client))
     const iterator = this.container.items.readAll();
     const { resources } = await iterator.fetchAll();
