@@ -6,6 +6,7 @@ const httpTrigger: AzureFunction = async function (
   req: HttpRequest
 ): Promise<void> {
   let response = { body: "Hello from the function!", status: 200 };;
+  context.log("just saying hello...")
 
   context.res = response;
 };

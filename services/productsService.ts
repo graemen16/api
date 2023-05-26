@@ -7,7 +7,7 @@ const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const productService = {
   init() {
     try {
-      this.client = new CosmosClient(CONNECTION_STRING);
+      this.client  = new CosmosClient(CONNECTION_STRING);
       this.database = this.client.database("tailwind");
       this.container = this.database.container("products");
     } catch (err) {
@@ -18,7 +18,8 @@ const productService = {
     const { resource } = await this.container.items.create(productToCreate);
     return resource;
   },
-  async read(): Promise<string> {
+  async read(context: Context): Promise<string> {
+    context.log ("Client : " + this.client + "type " + typeof(this.client))
     const iterator = this.container.items.readAll();
     const { resources } = await iterator.fetchAll();
     return JSON.stringify(resources);

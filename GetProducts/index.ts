@@ -8,7 +8,7 @@ const httpTrigger: AzureFunction = async function (
   let response;
 
   try {
-    let products = await productsService.read();
+    let products = await productsService.read(context);
     response = { body: products, status: 200 };
   } catch (err) {
     response = { body: 'Caught an error : ' + err.message, status: 500 };
