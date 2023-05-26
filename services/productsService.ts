@@ -6,9 +6,9 @@ const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 const productService = {
 
-  init(context: Context) {
+  init() {
     
-     context.log('Con: ' + CONNECTION_STRING)
+     //context.log('Con: ' + CONNECTION_STRING)
   
     try {
       this.client  = new CosmosClient(CONNECTION_STRING);
@@ -24,7 +24,7 @@ const productService = {
   },
   async read(context: Context): Promise<string> {
 
-    this.init(context)
+    //this.init(context)
     context.log ("Client : " + this.client + "type " + typeof(this.client))
     const iterator = this.container.items.readAll();
     const { resources } = await iterator.fetchAll();
@@ -43,6 +43,6 @@ const productService = {
   },
 };
 
-//productService.init();
+productService.init();
 
 export default productService;
