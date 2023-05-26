@@ -2,15 +2,14 @@ import { CosmosClient } from "@azure/cosmos";
 import {Context} from "@azure/functions"
 
 // Set connection string from CONNECTION_STRING value in local.settings.json
-
+const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 const productService = {
 
   init(context: Context) {
-    const CONNECTION_STRING = process.env.CONNECTION_STRING;
-    const ALT_CONNECTION_STRING = process.env.ALT_CONNECTION_STRING;
-    context.log('Con: ' + CONNECTION_STRING)
-    context.log('Alt: ' + ALT_CONNECTION_STRING)
+    
+     context.log('Con: ' + CONNECTION_STRING)
+  
     try {
       this.client  = new CosmosClient(CONNECTION_STRING);
       this.database = this.client.database("tailwind");
