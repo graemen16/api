@@ -1,13 +1,14 @@
 import { query } from "./db";
 import { getOffset, emptyOrRows } from "../helper";
 import { config } from "../config";
+import { Context } from "@azure/functions";
 
-export async function getMultiple(page = 1) {
+export async function getMultiple(context: Context, page = 1) {
+  context.log("getMultiples - requesting data")
   const offset = getOffset(page, config.listPerPage);
-  const rows = await query(
-    `SELECT * 
-    FROM Bids LIMIT ${offset}, ${config.listPerPage}`
-  );
+  const queryText = `SELECT * FROM Bids LIMIT ${offset}, ${config.listPerPage}`
+  context.log("getMultiples query : " + queryText)
+  const rows = await query(queryText);
   // need to translate the response into the representation of the js object
   // Map Row to Bid
 

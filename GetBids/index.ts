@@ -10,7 +10,7 @@ const httpTrigger: AzureFunction = async function (
 
   try {
     //let bids = await productsService.read(context);
-    let bids = await getMultiple();
+    let bids = await getMultiple(context);
     response = { body: bids, status: 200 };
   } catch (err) {
     response = { body: 'Caught an error : ' + err.message, status: 500 };
