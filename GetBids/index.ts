@@ -7,7 +7,7 @@ const httpTrigger: AzureFunction = async function (
   req: HttpRequest
 ): Promise<void> {
   let response;
-
+context.log("GetBids : starting")
   try {
     //let bids = await productsService.read(context);
     let bids = await getMultiple(context);
