@@ -1,5 +1,5 @@
 import { Context } from "@azure/functions";
-import { config, configParam1 } from "../config";
+import { config, configParam1, configParam2 } from "../config";
 
 export async function helloText(
   context: Context,
@@ -9,7 +9,7 @@ export async function helloText(
   var message;
   switch (mode) {
     case "test1":
-      fromConfig = "not from config" //configParam1;
+      fromConfig = configParam2;
       message = "configParam1 " + fromConfig
       context.log(message);
       return message;

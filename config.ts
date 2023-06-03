@@ -13,3 +13,4 @@ export const config = {
     listPerPage: 10,
   };
  export const configParam1 = process.env.DB_USERNAME;
+ export const configParam2 = "just a string";
