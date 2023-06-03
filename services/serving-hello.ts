@@ -15,15 +15,13 @@ export async function helloText(
       return message;
       break;
     case "test2":
-      fromConfig = config.db.database;
+      fromConfig = "test2" //config.db.database;
       message = ("database " + fromConfig);
-      message = "configParam1 " + fromConfig
       context.log(message);
       return message;
       break;
     case "test3":
-      fromConfig = config.db;
-      message=("database " + fromConfig);
+      fromConfig = {test: "test3"} //config.db;
       message = "configParam1 " + JSON.stringify(fromConfig)
       context.log(message);
       return message;
