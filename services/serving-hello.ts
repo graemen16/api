@@ -1,5 +1,6 @@
 import { Context } from "@azure/functions";
-import { config, configParam1, configParam2 } from "../config";
+//import { config, configParam1, configParam2 } from "../config";
+import { conf2 } from "../config2";
 
 export async function helloText(
   context: Context,
@@ -9,8 +10,8 @@ export async function helloText(
   var message;
   switch (mode) {
     case "test1":
-      fromConfig = configParam2;
-      message = "configParam1 " + fromConfig
+      fromConfig = conf2.db_string
+      message = "test1 : " + fromConfig
       context.log(message);
       return message;
       break;
