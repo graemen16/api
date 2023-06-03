@@ -9,7 +9,7 @@ export async function helloText(
   var message;
   switch (mode) {
     case "test1":
-      fromConfig = configParam1;
+      fromConfig = "not from config" //configParam1;
       message = "configParam1 " + fromConfig
       context.log(message);
       return message;
