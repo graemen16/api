@@ -1,11 +1,11 @@
 import * as mysql from "mysql2/promise.js";
 //import { config } from "../config";
-import { conf2 } from "../config2"
+import { config } from "../config"
 
 
 export async function query(sql: string, params?: any) {
   //console.log(config.db);
-  const connection_str = conf2.db_string;
+  const connection_str = config.db_string;
   //const connection = await mysql.createConnection(config.db);
   const connection = await mysql.createConnection(connection_str);
   const [results] = await connection.execute(sql, params);
@@ -13,7 +13,7 @@ export async function query(sql: string, params?: any) {
   return results;
 }
 export async function getConnection():Promise<mysql.Connection>{
-  const connection_str = conf2.db_string;
+  const connection_str = config.db_string;
   //return await mysql.createConnection(config.db);
   return await mysql.createConnection(connection_str);
 }
